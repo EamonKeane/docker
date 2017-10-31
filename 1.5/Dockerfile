@@ -5,7 +5,8 @@ RUN apk --no-cache add curl git subversion openssh openssl mercurial tini bash z
 RUN echo "memory_limit=-1" > "$PHP_INI_DIR/conf.d/memory-limit.ini" \
  && echo "date.timezone=${PHP_TIMEZONE:-UTC}" > "$PHP_INI_DIR/conf.d/date_timezone.ini"
 
-RUN docker-php-ext-install zip
+RUN docker-php-ext-install zip \
+                           bcmath
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /tmp
